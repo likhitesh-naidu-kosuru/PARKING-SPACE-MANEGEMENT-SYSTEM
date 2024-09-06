@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Space Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Parking Space Management System</h1>
+    <form id="parkingForm">
+        <label for="spaceNumber">Parking Space Number:</label>
+        <input type="text" id="spaceNumber" name="spaceNumber" required>
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="Available">Available</option>
+            <option value="Occupied">Occupied</option>
+        </select>
+        <button type="submit">Add Parking Space</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Parking Space Number</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="parkingTableBody">
+            <!-- Parking spaces will be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('parkingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const spaceNumber = document.getElementById('spaceNumber').value;
+            const status = document.getElementById('status').value;
+
+            const tableBody = document.getElementById('parkingTableBody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `<td>${spaceNumber}</td><td>${status}</td>`;
+            tableBody.appendChild(newRow);
+
+            document.getElementById('parkingForm').reset();
+        });
+    </script>
+</body>
+</html>
